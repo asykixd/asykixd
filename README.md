@@ -1,13 +1,4 @@
-<!-- Header -->
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:ff6b35&height=220&section=header&text=asykixd&fontSize=72&fontColor=ffffff&fontAlignY=38&desc=systems%20%E2%80%A2%20tooling%20%E2%80%A2%20automation&descAlignY=58&descSize=18&animation=fadeIn" alt="header" />
-</p>
 
-<p align="center">
-  <a href="https://github.com/asykixd">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=800&color=FF6B35&center=true&vCenter=true&width=600&lines=fn+main()+%7B+build_cool_stuff();+%7D;Rust+%E2%80%A2+Python+%E2%80%A2+C+%E2%80%A2+TypeScript;Low-level+when+it+matters%2C+high-level+when+it+ships;Currently+hacking+on+Evelin+%F0%9F%93%B1" alt="typing" />
-  </a>
-</p>
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=asykixd&label=profile%20views&color=ff6b35&style=flat-square" alt="views" />
