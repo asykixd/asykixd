@@ -1,26 +1,16 @@
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=20&duration=2500&pause=1000&color=FF6B35&center=true&vCenter=true&width=500&lines=Rust;Python;C;TypeScript" alt="Rust, Python, C, TypeScript" />
+Software engineer working on systems programming, developer tooling and desktop applications.
+
+<p>
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=2500&pause=1200&color=8B949E&vCenter=true&width=300&height=30&lines=Rust;Python;C;TypeScript" alt="Rust, Python, C, TypeScript" />
 </p>
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=rust,python,c,ts,react,electron,nodejs,linux,docker,git&perline=10" alt="stack" />
-</p>
+<img src="https://skillicons.dev/icons?i=rust,python,c,ts,react,electron,nodejs,linux,docker,git&perline=10" alt="Rust, Python, C, TypeScript, React, Electron, Node.js, Linux, Docker, Git" />
 
 ### Projects
 
-**[Evelin](https://github.com/asykixd/Evelin)** — desktop app for managing a farm of USB-connected Android devices: live screens via scrcpy, input broadcast, action recording, scenarios, proxy management. Electron · React · TypeScript.
+- **[Evelin](https://github.com/asykixd/Evelin)** — desktop application for managing fleets of USB-connected Android devices: real-time screen mirroring, synchronized input across devices, action recording and replay, batch operations, proxy configuration. Built with Electron, React and TypeScript.
 
-### Stats
+### Activity
 
-<p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&theme=github_dark&hide_border=true&hide_title=true&icon_color=ff6b35" alt="stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&theme=github_dark&hide_border=true" alt="top langs" />
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/asykixd/asykixd/output/github-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/asykixd/asykixd/output/github-snake.svg" />
-    <img alt="contribution snake" src="https://raw.githubusercontent.com/asykixd/asykixd/output/github-snake-dark.svg" />
-  </picture>
-</p>
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&theme=github_dark&hide_border=true&hide_title=true" alt="GitHub stats" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&theme=github_dark&hide_border=true" alt="Top languages" />
