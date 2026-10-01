@@ -1,16 +1,28 @@
-Software engineer working on systems programming, developer tooling and desktop applications.
+Software engineer focused on systems programming, developer tooling and desktop applications.
 
-<p>
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=2500&pause=1200&color=8B949E&vCenter=true&width=300&height=30&lines=Rust;Python;C;TypeScript" alt="Rust, Python, C, TypeScript" />
-</p>
+<br />
 
-<img src="https://skillicons.dev/icons?i=rust,python,c,ts,react,electron,nodejs,linux,docker,git&perline=10" alt="Rust, Python, C, TypeScript, React, Electron, Node.js, Linux, Docker, Git" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg" />
+  <img src="assets/stack-light.svg" width="100%" alt="Rust, Python, C, TypeScript" />
+</picture>
 
-### Projects
+<br /><br />
 
-- **[Evelin](https://github.com/asykixd/Evelin)** — desktop application for managing fleets of USB-connected Android devices: real-time screen mirroring, synchronized input across devices, action recording and replay, batch operations, proxy configuration. Built with Electron, React and TypeScript.
+<a href="https://github.com/asykixd/Evelin">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/evelin-dark.svg" />
+    <img src="assets/evelin-light.svg" width="100%" alt="Evelin — desktop application for managing fleets of Android devices" />
+  </picture>
+</a>
 
-### Activity
+<br /><br />
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&theme=github_dark&hide_border=true&hide_title=true" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&theme=github_dark&hide_border=true" alt="Top languages" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&hide_title=true&bg_color=0d1117&text_color=8b949e&icon_color=8b949e&title_color=e6edf3" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&hide_title=true&bg_color=ffffff&text_color=656d76&icon_color=656d76&title_color=1f2328" alt="GitHub stats" />
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&hide_border=true&bg_color=0d1117&text_color=8b949e&title_color=e6edf3" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&hide_border=true&bg_color=ffffff&text_color=656d76&title_color=1f2328" alt="Top languages" />
+</picture>
