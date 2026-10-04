@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="216" viewBox="0 0 840 216" role="img" aria-label="asykixd — software engineer focused on systems programming, developer tooling and desktop applications">
+  <style>
+    .label { font: 600 10.5px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #6e7681; letter-spacing: 1.6px; }
+    .title { font: 600 24px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; fill: #e6edf3; }
+    .desc  { font: 400 13.5px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; fill: #8b949e; }
+    .pill  { font: 500 11.5px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #8b949e; }
+    .link  { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #6e7681; }
+    .tiny  { font: 500 10px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #6e7681; letter-spacing: 1.2px; }
+    .mono  { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #e6edf3; }
+    .dim   { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #8b949e; }
+    .live  { animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+    .name  { font: 700 44px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; fill: #e6edf3; letter-spacing: -.5px; }
+    .lead  { font: 400 14.5px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; fill: #8b949e; }
+    .pr    { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #2dd4bf; }
+    .rise  { opacity: 0; animation: rise .7s cubic-bezier(.2,.8,.2,1) forwards; }
+    .cb    { animation: cblink 1s steps(1,end) infinite; }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @keyframes cblink { 0% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes l1 { 0%,0.49% { opacity: 0; } 0.50%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .l1 { animation: l1 12.0s infinite; }
+    @keyframes l1c { 0%,4.00% { transform: translateX(0); animation-timing-function: steps(6,end); } 11.00%,100% { transform: translateX(43.2px); } } .l1c { animation: l1c 12.0s infinite; }
+    @keyframes l3 { 0%,15.99% { opacity: 0; } 16.00%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .l3 { animation: l3 12.0s infinite; }
+    @keyframes l3c { 0%,18.00% { transform: translateX(0); animation-timing-function: steps(13,end); } 31.00%,100% { transform: translateX(93.6px); } } .l3c { animation: l3c 12.0s infinite; }
+    @keyframes l5 { 0%,36.99% { opacity: 0; } 37.00%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .l5 { animation: l5 12.0s infinite; }
+    @keyframes l5c { 0%,39.00% { transform: translateX(0); animation-timing-function: steps(18,end); } 55.00%,100% { transform: translateX(129.6px); } } .l5c { animation: l5c 12.0s infinite; }
+    @keyframes o2 { 0%,12.99% { opacity: 0; } 13.00%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .o2 { animation: o2 12.0s infinite; }
+    @keyframes o4 { 0%,32.99% { opacity: 0; } 33.00%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .o4 { animation: o4 12.0s infinite; }
+    @keyframes o6 { 0%,57.99% { opacity: 0; } 58.00%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .o6 { animation: o6 12.0s infinite; }
+    @keyframes p7 { 0%,59.99% { opacity: 0; } 60.00%,91% { opacity: 1; } 95%,100% { opacity: 0; } } .p7 { animation: p7 12.0s infinite; }
+    @keyframes cur { 0%,4.00% { transform: translate(0px,0px); animation-timing-function: steps(6,end); } 11.00%,12.50% { transform: translate(43.2px,0px); } 12.51% { transform: translate(0px,40px); } 16.00%,18.00% { transform: translate(0px,38px); animation-timing-function: steps(13,end); } 31.00%,32.50% { transform: translate(93.6px,38px); } 32.51% { transform: translate(0px,78px); } 37.00%,39.00% { transform: translate(0px,76px); animation-timing-function: steps(18,end); } 55.00%,56.50% { transform: translate(129.6px,76px); } 56.51% { transform: translate(0px,116px); } 60.00%,100% { transform: translate(0px,114px); } } .cur { animation: cur 12s infinite; }
+  </style>
+  <defs>
+    <linearGradient id="nm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4ee6b0"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1"><stop offset="0" stop-color="#4ee6b0" stop-opacity=".10"/><stop offset=".6" stop-color="#4ee6b0" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect x=".5" y=".5" width="839" height="215" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <rect x=".5" y=".5" width="839" height="215" rx="12" fill="url(#glow)"/>
+  <g class="rise" style="animation-delay:.1s"><text x="32" y="44" class="label">HI, I'M</text></g>
+  <g class="rise" style="animation-delay:.25s"><text x="30" y="96" class="name">asykixd</text>
+    <rect x="32" y="110" width="56" height="3" rx="1.5" fill="url(#nm)"/></g>
+  <g class="rise" style="animation-delay:.4s">
+    <text x="32" y="142" class="lead">Software engineer focused on systems programming,</text>
+    <text x="32" y="164" class="lead">developer tooling and desktop applications.</text>
+  </g>
+  <g class="rise" style="animation-delay:.55s"><circle cx="36" cy="188" r="3" fill="#2dd4bf" class="live"/><text x="46" y="192" class="link">now shipping <tspan style="fill:#2dd4bf">uroboros 1.0.0</tspan></text></g>
+  <g class="rise" style="animation-delay:.3s">
+    <rect x="456" y="20" width="352" height="176" rx="10" fill="#161b22" stroke="#21262d"/>
+    <circle cx="472" cy="35" r="4" fill="#30363d"/><circle cx="486" cy="35" r="4" fill="#30363d"/><circle cx="500" cy="35" r="4" fill="#30363d"/>
+    <text x="632.0" y="39" class="tiny" text-anchor="middle">~/asykixd</text>
+    <line x1="456" y1="50" x2="808" y2="50" stroke="#21262d"/>
+        <g class="l1"><text x="474.0" y="68" class="pr" textLength="7.2" lengthAdjust="spacingAndGlyphs">$</text><text x="488.4" y="68" class="mono" textLength="43.2" lengthAdjust="spacingAndGlyphs">whoami</text><rect x="487.4" y="56" width="53.2" height="16" fill="#161b22" class="l1c"/></g>
+    <g class="l3"><text x="474.0" y="106" class="pr" textLength="7.2" lengthAdjust="spacingAndGlyphs">$</text><text x="488.4" y="106" class="mono" textLength="93.6" lengthAdjust="spacingAndGlyphs">ls ~/projects</text><rect x="487.4" y="94" width="103.6" height="16" fill="#161b22" class="l3c"/></g>
+    <g class="l5"><text x="474.0" y="144" class="pr" textLength="7.2" lengthAdjust="spacingAndGlyphs">$</text><text x="488.4" y="144" class="mono" textLength="129.6" lengthAdjust="spacingAndGlyphs">uroboros --version</text><rect x="487.4" y="132" width="139.6" height="16" fill="#161b22" class="l5c"/></g>
+    <g class="o2"><text x="474.0" y="87" class="mono" textLength="50.4" lengthAdjust="spacingAndGlyphs">asykixd</text><text x="531.6" y="87" class="dim" textLength="194.4" lengthAdjust="spacingAndGlyphs">· systems, tooling, desktop</text></g>
+    <g class="o4"><text x="474.0" y="125" class="mono" style="fill:#4ee6b0" textLength="43.2" lengthAdjust="spacingAndGlyphs">Evelin</text><text x="531.6" y="125" class="mono" style="fill:#2dd4bf" textLength="57.6" lengthAdjust="spacingAndGlyphs">uroboros</text><text x="603.6" y="125" class="dim" textLength="79.2" lengthAdjust="spacingAndGlyphs">????-??????</text></g>
+    <g class="o6"><text x="474.0" y="163" class="mono" style="fill:#2dd4bf" textLength="36.0" lengthAdjust="spacingAndGlyphs">1.0.0</text><text x="517.2" y="163" class="dim" textLength="57.6" lengthAdjust="spacingAndGlyphs">(stable)</text></g>
+    <g class="p7"><text x="474.0" y="182" class="pr" textLength="7.2" lengthAdjust="spacingAndGlyphs">$</text></g>
+    <g class="cur"><rect x="488.4" y="57" width="7" height="14" fill="#2dd4bf" fill-opacity=".85" class="cb"/></g>
+  </g>
+</svg>

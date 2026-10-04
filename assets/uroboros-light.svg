@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="232" viewBox="0 0 840 232" role="img" aria-label="Uroboros 1.0.0 — modular Telegram userbot">
+  <style>
+    .label { font: 600 10.5px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #8c959f; letter-spacing: 1.6px; }
+    .title { font: 600 24px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; fill: #1f2328; }
+    .desc  { font: 400 13.5px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif; fill: #656d76; }
+    .pill  { font: 500 11.5px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #656d76; }
+    .link  { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #8c959f; }
+    .tiny  { font: 500 10px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #8c959f; letter-spacing: 1.2px; }
+    .mono  { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #1f2328; }
+    .dim   { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #656d76; }
+    .live  { animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+    .cmd   { font: 400 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #0f766e; }
+    .meta  { font: 400 9px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #8c959f; }
+    .spin  { transform-box: fill-box; transform-origin: center; animation: spin 14s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .cb    { animation: cblink 1s steps(1,end) infinite; }
+    .caret { animation: caret 10s infinite; }
+    .t1 { animation: t1 10s infinite; } .c1 { animation: c1 10s infinite; }
+    .t2 { animation: t2 10s infinite; } .c2 { animation: c2 10s infinite; }
+    .b1a { animation: b1a 10s infinite; } .b1b { animation: b1b 10s infinite; }
+    .b2a { animation: b2a 10s infinite; } .b2b { animation: b2b 10s infinite; }
+    @keyframes cblink { 0% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes caret {
+      0%,4%      { transform: translateX(0); animation-timing-function: steps(10,end); }
+      16%,19%    { transform: translateX(72.0px); }
+      19.1%,42%  { transform: translateX(0); animation-timing-function: steps(5,end); }
+      54%,57%    { transform: translateX(36.0px); }
+      57.1%,100% { transform: translateX(0); } }
+    @keyframes t1 { 0%,19% { opacity: 1; } 19.1%,100% { opacity: 0; } }
+    @keyframes c1 { 0%,4% { transform: translateX(0); animation-timing-function: steps(10,end); } 16%,100% { transform: translateX(72.0px); } }
+    @keyframes t2 { 0%,39.9% { opacity: 0; } 40%,57% { opacity: 1; } 57.1%,100% { opacity: 0; } }
+    @keyframes c2 { 0%,42% { transform: translateX(0); animation-timing-function: steps(5,end); } 54%,100% { transform: translateX(36.0px); } }
+    @keyframes b1a { 0%,19% { opacity: 0; transform: translateY(6px); } 22%,29% { opacity: 1; transform: none; } 31%,100% { opacity: 0; transform: none; } }
+    @keyframes b1b { 0%,29% { opacity: 0; } 31%,91% { opacity: 1; } 95%,100% { opacity: 0; } }
+    @keyframes b2a { 0%,57% { opacity: 0; transform: translateY(6px); } 60%,67% { opacity: 1; transform: none; } 69%,100% { opacity: 0; transform: none; } }
+    @keyframes b2b { 0%,67% { opacity: 0; } 69%,91% { opacity: 1; } 95%,100% { opacity: 0; } }
+  </style>
+  <defs>
+    <linearGradient id="ug" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#0f766e"/></linearGradient>
+    <radialGradient id="glow" cx="1" cy="0" r="1"><stop offset="0" stop-color="#14b8a6" stop-opacity=".07"/><stop offset=".7" stop-color="#14b8a6" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#f6f8fa"/><circle cx="6" cy="6" r=".9" fill="#d8dee4"/></pattern>
+    <clipPath id="panel"><rect x="556" y="24" width="260" height="184" rx="10"/></clipPath>
+  </defs>
+  <rect x=".5" y=".5" width="839" height="231" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x=".5" y=".5" width="839" height="231" rx="12" fill="url(#glow)"/>
+  <circle cx="35" cy="34" r="3.5" fill="#14b8a6" class="live"/>
+  <text x="46" y="38" class="label" style="fill:#0f766e">NEW RELEASE · v1.0.0</text>
+  <g transform="translate(30 46) scale(0.5)"><g class="spin">
+      <path d="M49.0 19.7A21 21 0 1 1 12.3 24.8" fill="none" stroke="url(#ug)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M12.3 24.8A21 21 0 0 1 24.8 12.3" fill="none" stroke="url(#ug)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M24.8 12.3A21 21 0 0 1 32.7 11.0" fill="none" stroke="url(#ug)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M32.7 11.0A21 21 0 0 1 37.1 11.6" fill="none" stroke="url(#ug)" stroke-width="2.4" stroke-linecap="round"/>
+      <g transform="translate(42.5 13.8) rotate(-150)"><path d="M-8 -5 Q2 -7.6 9 -1.2 L9 1.2 Q2 7.6 -8 5 Q-10 0 -8 -5Z" fill="url(#ug)"/><circle cx="2" cy="-2.4" r="1.6" fill="#fff"/><circle cx="2.4" cy="-2.4" r="0.8" fill="#0b1211"/></g>
+    </g></g>
+  <text x="68" y="70" class="title">Uroboros</text>
+  <text x="188" y="70" class="link">github.com/asykixd/uroboros</text>
+  <text x="32" y="100" class="desc">Modular Telegram userbot on Python and Telethon: one-command</text><text x="32" y="121" class="desc">module installs, inline buttons and forms, Hikka/FTG module</text><text x="32" y="142" class="desc">compatibility and account protection from malicious code.</text>
+  <rect x="32" y="176" width="78" height="24" rx="12" fill="none" stroke="#d0d7de"/><circle cx="46" cy="188" r="4" fill="#3572a5"/><text x="56" y="192" class="pill">Python</text><rect x="117.6" y="176" width="78" height="24" rx="12" fill="none" stroke="#d0d7de"/><text x="156.6" y="192" class="pill" text-anchor="middle">Telethon</text><rect x="203.2" y="176" width="71" height="24" rx="12" fill="none" stroke="#d0d7de"/><text x="238.7" y="192" class="pill" text-anchor="middle">aiogram</text><rect x="281.79999999999995" y="176" width="64" height="24" rx="12" fill="none" stroke="#d0d7de"/><text x="313.8" y="192" class="pill" text-anchor="middle">Docker</text><rect x="353.4" y="176" width="78" height="24" rx="12" fill="none" stroke="#d0d7de"/><text x="392.4" y="192" class="pill" text-anchor="middle">AGPL-3.0</text>
+  <rect x="556" y="24" width="260" height="184" rx="10" fill="url(#dots)" stroke="#eaeef2"/>
+  <g clip-path="url(#panel)">
+    <text x="572" y="48" class="tiny">SAVED MESSAGES</text>
+    <circle cx="802" cy="44" r="3" fill="#14b8a6" class="live"/>
+    <text x="794" y="48" class="tiny" text-anchor="end">ONLINE</text>
+    <g class="b1a"><rect x="710.0" y="98" width="94.0" height="22" rx="11" fill="#14b8a6" fill-opacity=".10" stroke="#14b8a6" stroke-opacity=".35"/><text x="721.0" y="113" class="cmd" textLength="72.0" lengthAdjust="spacingAndGlyphs">.dlm notes</text></g>
+    <g class="b1b"><rect x="636.0" y="98" width="168.0" height="22" rx="11" fill="#14b8a6" fill-opacity=".10" stroke="#14b8a6" stroke-opacity=".35"/><text x="647.0" y="113" class="mono" textLength="108.0" lengthAdjust="spacingAndGlyphs">notes installed</text><text x="794" y="113" class="meta" text-anchor="end">edited</text></g>
+    <g class="b2a"><rect x="746.0" y="128" width="58.0" height="22" rx="11" fill="#14b8a6" fill-opacity=".10" stroke="#14b8a6" stroke-opacity=".35"/><text x="757.0" y="143" class="cmd" textLength="36.0" lengthAdjust="spacingAndGlyphs">.info</text></g>
+    <g class="b2b"><rect x="643.2" y="128" width="160.8" height="22" rx="11" fill="#14b8a6" fill-opacity=".10" stroke="#14b8a6" stroke-opacity=".35"/><text x="654.2" y="143" class="mono" textLength="100.8" lengthAdjust="spacingAndGlyphs">Uroboros 1.0.0</text><text x="794" y="143" class="meta" text-anchor="end">edited</text></g>
+    <rect x="568" y="170" width="236" height="26" rx="13" fill="#ffffff" stroke="#d0d7de"/>
+    <g class="t1"><text x="580.0" y="187" class="cmd" textLength="72.0" lengthAdjust="spacingAndGlyphs">.dlm notes</text><rect x="579" y="175" width="84.0" height="16" fill="#ffffff" class="c1"/></g>
+    <g class="t2"><text x="580.0" y="187" class="cmd" textLength="36.0" lengthAdjust="spacingAndGlyphs">.info</text><rect x="579" y="175" width="48.0" height="16" fill="#ffffff" class="c2"/></g>
+    <g class="caret"><rect x="580" y="176" width="1.5" height="14" fill="#14b8a6" class="cb"/></g>
+    <circle cx="802" cy="183" r="9" fill="#14b8a6"/>
+    <path d="M798 179 L807 183 L798 187 L799.5 183 Z" fill="#ffffff"/>
+  </g>
+</svg>

@@ -1,6 +1,9 @@
-Software engineer focused on systems programming, developer tooling and desktop applications.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg" />
+  <img src="assets/hero-light.svg" width="100%" alt="asykixd — software engineer focused on systems programming, developer tooling and desktop applications" />
+</picture>
 
-<br />
+<br /><br />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg" />
@@ -18,22 +21,20 @@ Software engineer focused on systems programming, developer tooling and desktop 
 
 <br /><br />
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/zero-tunnel-dark.svg" />
-  <img src="assets/zero-tunnel-light.svg" width="49%" alt="Classified VPN project in development (Rust)" />
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/userbot-dark.svg" />
-  <img src="assets/userbot-light.svg" width="49%" alt="Classified Telegram userbot in development (Python)" />
-</picture>
+<a href="https://github.com/asykixd/uroboros">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/uroboros-dark.svg" />
+    <img src="assets/uroboros-light.svg" width="100%" alt="Uroboros 1.0.0 — modular Telegram userbot on Python and Telethon" />
+  </picture>
+</a>
 
 <br /><br />
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&hide_title=true&bg_color=0d1117&text_color=8b949e&icon_color=8b949e&title_color=e6edf3" />
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=asykixd&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&hide_title=true&bg_color=ffffff&text_color=656d76&icon_color=656d76&title_color=1f2328" alt="GitHub stats" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/secret-vpn-dark.svg" />
+  <img src="assets/secret-vpn-light.svg" width="49%" alt="Classified VPN project in development (Rust)" />
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&hide_border=true&bg_color=0d1117&text_color=8b949e&title_color=e6edf3" />
-  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asykixd&layout=compact&langs_count=6&hide_border=true&bg_color=ffffff&text_color=656d76&title_color=1f2328" alt="Top languages" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg" />
+  <img src="assets/stats-light.svg" width="49%" alt="GitHub activity over the last 12 months" />
 </picture>
