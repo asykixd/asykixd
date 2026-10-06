@@ -9,6 +9,8 @@ import os
 import sys
 import urllib.request
 
+from tui import THEMES, window
+
 LOGIN = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("GITHUB_REPOSITORY_OWNER", "asykixd")
 TOKEN = os.environ["GITHUB_TOKEN"]
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
@@ -35,16 +37,6 @@ query($login: String!) {
     }
   }
 }"""
-
-MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace"
-SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif"
-THEMES = {
-    "dark": dict(bg="#0d1117", stroke="#30363d", line="#21262d", empty="#161b22", title="#e6edf3",
-                 desc="#8b949e", label="#6e7681", heat=("#0f3d38", "#13695f", "#1fa594", "#2dd4bf")),
-    "light": dict(bg="#ffffff", stroke="#d0d7de", line="#eaeef2", empty="#eff2f5", title="#1f2328",
-                  desc="#656d76", label="#8c959f", heat=("#b2ece2", "#5fd2c0", "#14a493", "#0f766e")),
-}
-
 
 def fetch():
     req = urllib.request.Request(
@@ -103,72 +95,49 @@ def render(s, t):
         q = [counts[int(len(counts) * p)] for p in (0.25, 0.5, 0.75)]
         return t["heat"][sum(c > x for x in q)]
 
-    o = []
+    a = t["accent"]
+    o = [f'<g class="on" style="animation-delay:.1s"><text x="30" y="50" class="acc">$</text>'
+         f'<text x="44.4" y="50" class="fg">gh activity --since 12mo</text></g>']
     # metrics
-    for i, (value, cap) in enumerate(((fmt(s["contributions"]), "CONTRIBUTIONS"),
-                                      (fmt(s["commits"]), "COMMITS"),
-                                      (f'{s["streak"]}d', "BEST STREAK"))):
-        x = 32 + i * 120
-        o.append(f'<g class="rise" style="animation-delay:{0.15 + i * 0.1:.2f}s">'
-                 f'<text x="{x}" y="84" class="num">{value}</text><text x="{x}" y="104" class="tiny">{cap}</text></g>')
+    for i, (value, cap) in enumerate(((fmt(s["contributions"]), "contribs"), (fmt(s["commits"]), "commits"),
+                                      (f'{s["streak"]}d', "streak"))):
+        x = 30 + i * 124
+        o.append(f'<g class="on" style="animation-delay:{.25 + i * .08:.2f}s"><text x="{x}" y="82" '
+                 f'style="font-size:22px;font-weight:700;fill:{a}">{value}</text>'
+                 f'<text x="{x}" y="98" class="dim sm">{cap}</text></g>')
 
     # heatmap
-    cell, gap = 10, 3
-    hx = 32 + (348 - (WEEKS * (cell + gap) - gap)) / 2
-    hy = 146
+    cell, gap = 10, 2
+    hx, hy = 30 + (352 - (WEEKS * (cell + gap) - gap)) / 2, 126
     prev_month = None
     for wi, week in enumerate(s["weeks"]):
         x = hx + wi * (cell + gap)
         first = dt.date.fromisoformat(week["contributionDays"][0]["date"])
         if first.month != prev_month and wi < WEEKS - 2:
             if prev_month is not None or first.day <= 7:
-                o.append(f'<text x="{x:.1f}" y="{hy - 8}" class="month">{first.strftime("%b")}</text>')
+                o.append(f'<text x="{x:.1f}" y="{hy - 6}" class="dim" style="font-size:9.5px">'
+                         f'{first.strftime("%b").lower()}</text>')
             prev_month = first.month
-        o.append(f'<g class="col" style="animation-delay:{0.3 + wi * 0.025:.3f}s">')
+        o.append(f'<g class="on" style="animation-delay:{.4 + wi * .02:.2f}s">')
         for d in week["contributionDays"]:
             row = (dt.date.fromisoformat(d["date"]).weekday() + 1) % 7  # Sun first, like GitHub
             fill = level(d["contributionCount"]) or t["empty"]
-            o.append(f'<rect x="{x:.1f}" y="{hy + row * (cell + gap)}" width="{cell}" height="{cell}" rx="2" fill="{fill}"/>')
+            o.append(f'<rect x="{x:.1f}" y="{hy + row * (cell + gap)}" width="{cell}" height="{cell}" fill="{fill}"/>')
         o.append("</g>")
 
-    # languages
-    by = 264
-    o.append(f'<text x="32" y="{by - 12}" class="tiny">LANGUAGES</text>')
-    o.append(f'<clipPath id="bar"><rect x="32" y="{by}" width="348" height="8" rx="4"/></clipPath><g clip-path="url(#bar)" class="grow">')
-    x = 32.0
-    for name, share, color in s["langs"]:
-        w = 348 * share
-        o.append(f'<rect x="{x:.1f}" y="{by}" width="{max(w - 1.5, 0):.1f}" height="8" fill="{color or t["stroke"]}"/>')
-        x += w
-    o.append("</g>")
-    for i, (name, share, color) in enumerate(s["langs"]):
-        lx, ly = 32 + (i % 3) * 120, by + 34 + (i // 3) * 22
-        o.append(f'<g class="rise" style="animation-delay:{1.0 + i * 0.08:.2f}s"><circle cx="{lx + 4}" cy="{ly - 4}" r="4" fill="{color or t["stroke"]}"/>'
-                 f'<text x="{lx + 14}" y="{ly}" class="lang">{name}</text>'
-                 f'<text x="{lx + 108}" y="{ly}" class="pct" text-anchor="end">{share * 100:.0f}%</text></g>')
+    # languages as htop meters
+    width = 24
+    for i, (name, share, _) in enumerate(s["langs"][:4]):
+        n = round(share * width)
+        y = 232 + i * 17
+        o.append(f'<g class="on" style="animation-delay:{1 + i * .08:.2f}s"><text x="30" y="{y}" class="sm" '
+                 f'xml:space="preserve"><tspan fill="{t["fg"]}">{name.lower()[:10]:<11}</tspan>'
+                 f'<tspan fill="{t["dim"]}">[</tspan><tspan fill="{a}">{"|" * n}</tspan>{" " * (width - n)}'
+                 f'<tspan fill="{t["dim"]}">]</tspan><tspan fill="{t["muted"]}"> {share * 100:>3.0f}%</tspan></text></g>')
 
-    updated = dt.date.today().strftime("%b %-d").upper()
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="412" height="344" viewBox="0 0 412 344" role="img" aria-label="GitHub activity: {s['contributions']} contributions in the last year">
-  <style>
-    .label {{ font: 600 10.5px {MONO}; fill: {t['label']}; letter-spacing: 1.6px; }}
-    .tiny  {{ font: 500 10px {MONO}; fill: {t['label']}; letter-spacing: 1.2px; }}
-    .month {{ font: 400 9.5px {MONO}; fill: {t['label']}; }}
-    .num   {{ font: 600 26px {SANS}; fill: {t['title']}; }}
-    .lang  {{ font: 400 12px {SANS}; fill: {t['desc']}; }}
-    .pct   {{ font: 400 11px {MONO}; fill: {t['label']}; }}
-    .rise  {{ opacity: 0; animation: rise .6s cubic-bezier(.2,.8,.2,1) forwards; }}
-    .col   {{ opacity: 0; animation: fade .5s ease forwards; }}
-    .grow  {{ transform-box: fill-box; transform-origin: left; transform: scaleX(0); animation: grow 1.1s cubic-bezier(.65,0,.35,1) forwards .9s; }}
-    @keyframes rise {{ from {{ opacity: 0; transform: translateY(6px); }} to {{ opacity: 1; transform: none; }} }}
-    @keyframes fade {{ to {{ opacity: 1; }} }}
-    @keyframes grow {{ to {{ transform: scaleX(1); }} }}
-  </style>
-  <rect x=".5" y=".5" width="411" height="343" rx="12" fill="{t['bg']}" stroke="{t['stroke']}"/>
-  <text x="32" y="36" class="label">LAST 12 MONTHS</text>
-  <text x="380" y="36" class="tiny" text-anchor="end">UPD {updated}</text>
-  {"".join(o)}
-</svg>
-"""
+    updated = dt.date.today().strftime("%b %-d").lower()
+    return window(t, 412, 312, f"GitHub activity: {s['contributions']} contributions in the last year",
+                  "activity", f"upd {updated}", "  " + "".join(o))
 
 
 if __name__ == "__main__":

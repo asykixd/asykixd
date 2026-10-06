@@ -3,11 +3,6 @@
   <img src="assets/hero-light.svg" width="100%" alt="asykixd — software engineer: systems programming, developer tooling, desktop applications. Latest releases: uroboros v1.0.0, Evelin v1.1.1" />
 </picture>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg" />
-  <img src="assets/stack-light.svg" width="100%" alt="Stack: Rust, Python, TypeScript, C; Electron, React, Node.js, Linux, Docker, ADB, scrcpy, Telethon, aiogram" />
-</picture>
-
 <a href="https://github.com/asykixd/Evelin">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/evelin-dark.svg" />
