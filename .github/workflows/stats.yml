@@ -2,16 +2,9 @@ name: Profile cards
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    # Hourly so new project releases show up quickly without hooks in the project repos.
+    - cron: "17 * * * *"
   workflow_dispatch:
-  # Sent by notify-profile.yml in project repos when a release is published.
-  repository_dispatch:
-    types: [release-published]
-
-# A release dispatch can land while the nightly run is pushing; queue instead of racing on git push.
-concurrency:
-  group: profile-cards
-  cancel-in-progress: false
 
 permissions:
   contents: write
