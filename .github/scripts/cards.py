@@ -49,8 +49,8 @@ def hero(t):
         ("focus", "systems · dev tooling · desktop"),
         ("langs", "rust  python  typescript  c"),
         ("tools", "electron  react  docker  linux  adb"),
-        ("projects", f'2 released <tspan fill="{t["dim"]}">·</tspan> 1 in development'),
-        ("latest", f'uroboros <tspan fill="{a}">v1.0.0</tspan> <tspan fill="{t["dim"]}">2026-10-04</tspan>'),
+        ("projects", f'2 released <tspan fill="{t["dim"]}">·</tspan> 1 in beta'),
+        ("latest", f'evelin <tspan fill="{a}">v1.1.9</tspan> <tspan fill="{t["dim"]}">2026-10-08</tspan>'),
     ]
     body = [
         "  " + prompt(t, 30, 50, "neofetch"),
@@ -62,7 +62,7 @@ def hero(t):
         "  " + prompt(t, 30, 218, "", delay=.9, cursor=True),
     ]
     return window(t, 840, 240, "asykixd — software engineer: systems programming, developer tooling, desktop "
-                  "applications. Rust, Python, TypeScript, C. Latest release: uroboros v1.0.0",
+                  "applications. Rust, Python, TypeScript, C. Latest release: Evelin v1.1.9",
                   "asykixd@github: ~", "zsh", "\n".join(body))
 
 
@@ -103,16 +103,16 @@ def evelin(t):
     out.append(f'<g class="on" style="animation-delay:1s"><text x="508" y="210" class="sm"><tspan fill="{a}">&gt;</tspan>'
                f'<tspan fill="{t["fg"]}"> tap 540,1210</tspan><tspan fill="{t["dim"]}"> → 6 devices · 4 ms</tspan></text></g>')
     return project(
-        t, "01", "evelin", "v1.1.1", "github.com/asykixd/Evelin", "evelin --help",
+        t, "01", "evelin", "v1.1.9", "github.com/asykixd/Evelin", "evelin --help",
         [("name", "android device farm control panel"),
          ("about", "mirror and drive dozens of usb phones"),
          ("", "from one window. no root required."),
-         ("features", "live screens · input broadcast"),
-         ("", "scenarios · batch adb · proxies"),
+         ("features", "live screens · input broadcast · proxies"),
+         ("", "text-aware scenarios · batch adb"),
          ("platform", "macos · windows"),
          ("stack", "electron react typescript scrcpy")],
         "  " + "".join(out),
-        "Evelin v1.1.1 — desktop control panel for Android device farms. Electron, React, TypeScript, ADB, scrcpy.",
+        "Evelin v1.1.9 — desktop control panel for Android device farms. Electron, React, TypeScript, ADB, scrcpy.",
         css)
 
 
@@ -161,13 +161,13 @@ def vpn(t):
         f'  <g class="on" style="animation-delay:.7s"><text x="44" y="112" class="acc">Building</text>'
         f'<text x="125" y="112" class="dim">[</text><rect x="135" y="103" width="190" height="10" fill="{w}" '
         f'class="prog"/><text x="330" y="112" class="dim">]</text></g>',
-        "  " + kv(30, 150, [("status", f'<tspan fill="{w}">in development</tspan>'), ("kind", "native vpn client"),
-                              ("lang", "rust"), ("release", "tba")], kw=76, delay=.9),
-        f'  <g class="on" style="animation-delay:1.2s"><text x="30" y="238" class="dim"># codename and details</text>'
-        f'<text x="30" y="256" class="dim"># classified until release</text></g>',
+        "  " + kv(30, 150, [("status", f'<tspan fill="{w}">private beta</tspan>'), ("kind", "proxy &amp; vpn client"),
+                              ("stack", "rust · slint · clash-rs"), ("platform", "macos · windows")], kw=76, delay=.9),
+        f'  <g class="on" style="animation-delay:1.2s"><text x="30" y="238" class="dim"># codename classified</text>'
+        f'<text x="30" y="256" class="dim"># until public release</text></g>',
         "  " + prompt(t, 30, 286, "", delay=1.4, cursor=True),
     ]
-    return window(t, 412, 312, "Unannounced VPN client in Rust — private, in development", "03 · classified",
+    return window(t, 412, 312, "Unannounced proxy and VPN client in Rust for macOS and Windows — private beta", "03 · classified",
                   "private", "\n".join(body), css, title_cls="warn")
 
 

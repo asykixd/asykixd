@@ -1,12 +1,12 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg" />
-  <img src="assets/hero-light.svg" width="100%" alt="asykixd — software engineer: systems programming, developer tooling, desktop applications. Latest releases: uroboros v1.0.0, Evelin v1.1.1" />
+  <img src="assets/hero-light.svg" width="100%" alt="asykixd — software engineer: systems programming, developer tooling, desktop applications. Latest releases: Evelin v1.1.9, uroboros v1.0.0" />
 </picture>
 
 <a href="https://github.com/asykixd/Evelin">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/evelin-dark.svg" />
-    <img src="assets/evelin-light.svg" width="100%" alt="Evelin v1.1.1 — desktop control panel for Android device farms. Electron, React, TypeScript, ADB, scrcpy. MIT." />
+    <img src="assets/evelin-light.svg" width="100%" alt="Evelin v1.1.9 — desktop control panel for Android device farms. Electron, React, TypeScript, ADB, scrcpy. MIT." />
   </picture>
 </a>
 
@@ -19,7 +19,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/secret-vpn-dark.svg" />
-  <img src="assets/secret-vpn-light.svg" width="49%" alt="Unannounced VPN client in Rust — private, in development" />
+  <img src="assets/secret-vpn-light.svg" width="49%" alt="Unannounced proxy and VPN client in Rust — private beta" />
 </picture>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg" />
