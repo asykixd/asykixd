@@ -1,13 +1,20 @@
 """Render the static profile cards in assets/ (hero, project cards) for both themes.
 
-Usage: python3 .github/scripts/cards.py
+Usage: [GITHUB_TOKEN=...] python3 .github/scripts/cards.py [login]
+Versions come from each project's latest non-prerelease GitHub release, so the cards follow new releases.
 The activity card is rendered separately by stats.py. Both share the look defined in tui.py.
 """
+import json
 import os
+import sys
+import urllib.error
+import urllib.request
 
 from tui import CH, THEMES, kv, redact, window
 
+LOGIN = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("GITHUB_REPOSITORY_OWNER", "asykixd")
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
+REPOS = {"evelin": "Evelin", "uroboros": "uroboros"}
 
 # 5x7 pixel glyphs for the hero logo
 GLYPHS = {
@@ -21,6 +28,32 @@ GLYPHS = {
 }
 
 
+def parse_release(data):
+    """(tag, YYYY-MM-DD) from a GitHub `releases/latest` payload."""
+    return data["tag_name"], data["published_at"][:10]
+
+
+def newest(releases):
+    """Name and release of the most recently published project; tags tie-break so the pick is stable."""
+    return max(releases.items(), key=lambda kv: (kv[1][1], kv[1][0]))
+
+
+def fetch_releases():
+    headers = {"Accept": "application/vnd.github+json"}
+    # Public repos work without a token, but CI's token avoids the 60 req/h anonymous limit.
+    if os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = f"bearer {os.environ['GITHUB_TOKEN']}"
+    out = {}
+    for name, repo in REPOS.items():
+        req = urllib.request.Request(f"https://api.github.com/repos/{LOGIN}/{repo}/releases/latest", headers=headers)
+        try:
+            with urllib.request.urlopen(req) as r:
+                out[name] = parse_release(json.load(r))
+        except urllib.error.HTTPError as e:
+            sys.exit(f"{LOGIN}/{repo}: latest release unavailable ({e.code} {e.reason})")
+    return out
+
+
 def prompt(t, x, y, cmd, delay=0.0, cursor=False):
     cur = (f'<rect x="{x + (len(cmd) + 2) * CH:.1f}" y="{y - 11}" width="{CH:.1f}" height="14" fill="{t["accent"]}" '
            f'class="blink"/>') if cursor else ""
@@ -30,7 +63,7 @@ def prompt(t, x, y, cmd, delay=0.0, cursor=False):
 
 # ---------------------------------------------------------------- hero
 
-def hero(t):
+def hero(t, rel):
     px, gap = 7, 1
     logo = []
     for li, ch in enumerate("asykixd"):
@@ -44,13 +77,14 @@ def hero(t):
                        for i, c in enumerate((t["fg"], t["muted"], t["dim"], t["accent"], t["warn"], "#79c0ff",
                                               "#d2a8ff", "#ff7b72")))
     a = t["accent"]
+    name, (tag, date) = newest(rel)
     rows = [
         ("role", "software engineer"),
         ("focus", "systems · dev tooling · desktop"),
         ("langs", "rust  python  typescript  c"),
         ("tools", "electron  react  docker  linux  adb"),
-        ("projects", f'2 released <tspan fill="{t["dim"]}">·</tspan> 1 in beta'),
-        ("latest", f'evelin <tspan fill="{a}">v1.1.9</tspan> <tspan fill="{t["dim"]}">2026-10-08</tspan>'),
+        ("projects", f'{len(rel)} released <tspan fill="{t["dim"]}">·</tspan> 1 in beta'),
+        ("latest", f'{name} <tspan fill="{a}">{tag}</tspan> <tspan fill="{t["dim"]}">{date}</tspan>'),
     ]
     body = [
         "  " + prompt(t, 30, 50, "neofetch"),
@@ -62,7 +96,7 @@ def hero(t):
         "  " + prompt(t, 30, 218, "", delay=.9, cursor=True),
     ]
     return window(t, 840, 240, "asykixd — software engineer: systems programming, developer tooling, desktop "
-                  "applications. Rust, Python, TypeScript, C. Latest release: Evelin v1.1.9",
+                  f"applications. Rust, Python, TypeScript, C. Latest release: {REPOS[name]} {tag}",
                   "asykixd@github: ~", "zsh", "\n".join(body))
 
 
@@ -79,7 +113,7 @@ def project(t, num, name, version, url, cmd, rows, right, aria, extra_css=""):
                   status=(name, f"release {version}", url))
 
 
-def evelin(t):
+def evelin(t, rel):
     css = """    .tap { opacity: 0; animation: tap 2.4s ease-out infinite; }
     @keyframes tap { 0%,40% { opacity: 0; } 44% { opacity: .35; } 80%,100% { opacity: 0; } }
 """
@@ -103,7 +137,7 @@ def evelin(t):
     out.append(f'<g class="on" style="animation-delay:1s"><text x="508" y="210" class="sm"><tspan fill="{a}">&gt;</tspan>'
                f'<tspan fill="{t["fg"]}"> tap 540,1210</tspan><tspan fill="{t["dim"]}"> → 6 devices · 4 ms</tspan></text></g>')
     return project(
-        t, "01", "evelin", "v1.1.9", "github.com/asykixd/Evelin", "evelin --help",
+        t, "01", "evelin", rel["evelin"][0], "github.com/asykixd/Evelin", "evelin --help",
         [("name", "android device farm control panel"),
          ("about", "mirror and drive dozens of usb phones"),
          ("", "from one window. no root required."),
@@ -112,15 +146,16 @@ def evelin(t):
          ("platform", "macos · windows"),
          ("stack", "electron react typescript scrcpy")],
         "  " + "".join(out),
-        "Evelin v1.1.9 — desktop control panel for Android device farms. Electron, React, TypeScript, ADB, scrcpy.",
+        f"Evelin {rel['evelin'][0]} — desktop control panel for Android device farms. Electron, React, TypeScript, ADB, "
+        "scrcpy.",
         css)
 
 
-def uroboros(t):
+def uroboros(t, rel):
     a, d, f = t["accent"], t["dim"], t["fg"]
     log = [("&gt;", a, ".dlm notes"), ("scan", f, "notes.py: 0 issues"), ("perm", f, "none requested"),
            ("ok", a, "notes 1.0 · 4 commands"), ("&gt;", a, ".update"), ("git", f, "fetch master: done"),
-           ("ok", a, "uroboros 1.0.0 latest")]
+           ("ok", a, f"uroboros {rel['uroboros'][0].lstrip('v')} latest")]
     n, period = len(log), 12.0
     css = "".join(
         f"    .l{i} {{ animation: l{i} {period}s infinite; }} @keyframes l{i} {{ 0%,{(i * .8 + .3) / period * 100:.1f}% "
@@ -135,7 +170,7 @@ def uroboros(t):
                    f'<text x="574" y="{y}" class="sm" fill="{col}" font-weight="600">{tag}</text>'
                    f'<text x="614" y="{y}" class="sm" fill="{f if col != a or tag == "&gt;" else a}">{msg}</text></g>')
     return project(
-        t, "02", "uroboros", "v1.0.0", "github.com/asykixd/uroboros", "uroboros --help",
+        t, "02", "uroboros", rel["uroboros"][0], "github.com/asykixd/uroboros", "uroboros --help",
         [("name", "modular telegram userbot"),
          ("about", "one-command modules, inline forms,"),
          ("", "code scan before install, rollback"),
@@ -144,10 +179,11 @@ def uroboros(t):
          ("compat", "hikka and ftg modules"),
          ("license", "agpl-3.0")],
         "  " + "".join(out),
-        "Uroboros v1.0.0 — modular Telegram userbot on Python and Telethon. PyPI, Docker. AGPL-3.0.", css)
+        f"Uroboros {rel['uroboros'][0]} — modular Telegram userbot on Python and Telethon. PyPI, Docker. AGPL-3.0.",
+        css)
 
 
-def vpn(t):
+def vpn(t, rel):
     css = """    .prog { transform-box: fill-box; transform-origin: left; animation: prog 6s steps(24,end) infinite; }
     @keyframes prog { 0% { transform: scaleX(.05); } 85%,100% { transform: scaleX(1); } }
 """
@@ -174,7 +210,8 @@ def vpn(t):
 CARDS = {"hero": hero, "evelin": evelin, "uroboros": uroboros, "secret-vpn": vpn}
 
 if __name__ == "__main__":
+    releases = fetch_releases()
     for name, fn in CARDS.items():
         for theme, t in THEMES.items():
             with open(os.path.join(OUT, f"{name}-{theme}.svg"), "w", encoding="utf-8") as f:
-                f.write(fn(t))
+                f.write(fn(t, releases))

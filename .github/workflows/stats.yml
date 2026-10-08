@@ -1,4 +1,4 @@
-name: Stats card
+name: Profile cards
 
 on:
   schedule:
@@ -18,10 +18,14 @@ jobs:
           # STATS_TOKEN (classic PAT with `repo`) adds private repos to the language breakdown.
           GITHUB_TOKEN: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
         run: python3 .github/scripts/stats.py "${{ github.repository_owner }}"
+      - name: Render project cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/cards.py "${{ github.repository_owner }}"
       - name: Commit
         run: |
           git diff --quiet assets/ && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -am "Update stats card"
+          git commit -am "Update profile cards"
           git push
